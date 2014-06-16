@@ -1,0 +1,22 @@
+<!doctype html>
+<html ng-app="dateJar">
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.6/angular.js"></script>
+    <script src="https://cdn.firebase.com/js/client/1.0.15/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/0.7.1/angularfire.js"></script>
+    <script src="app.js"></script>
+</head>
+<body ng-controller="DateController as ctrl">
+<h1>Date Jar</h1>
+Add a new date:
+<input type="text" ng-model="newDateText">
+<button ng-click="ctrl.addADate(newDateText)" ng-disabled="!newDateText">Add</button>
+
+<div class="dates">
+    <div ng-repeat="date in dates" class="date">
+        <input type="checkbox" ng-model="date.done"/>
+        {{date.title}}
+    </div>
+</div>
+</body>
+</html>
