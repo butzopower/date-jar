@@ -1,13 +1,15 @@
 angular.module("dateJar", ["firebase"]);
-angular.module("dateJar").controller("DateController", ["$scope", "$firebase", function($scope, $firebase) {
-    var firebaseRef = new Firebase("https://fiery-fire-8662.firebaseio.com/date-jar");
-    $scope.dates = $firebase(firebaseRef);
+angular.module("dateJar").controller("DateController", ["$scope", "$firebase", function ($scope, $firebase) {
+  var firebaseRef = new Firebase("https://fiery-fire-8662.firebaseio.com/dates");
+  var datesService = $firebase(firebaseRef);
+  datesService.$bind($scope, 'dates');
 
-    $scope.localDates = [];
-    $scope.dates.$bind($scope, "localDates");
+  this.addADate = function (newDateText) {
+    datesService.$add({title: newDateText, done: false});
+    $scope.newDateText = "";
+  };
 
-    this.addADate = function(newDateText) {
-      $scope.localDates.push({title: newDateText, done: false});
-      $scope.newDateText = "";
-    };
+  this.removeDate = function (date) {
+    $scope.dates.$remove(date.$id);
+  }
 }]);

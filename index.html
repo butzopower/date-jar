@@ -13,9 +13,12 @@ Add a new date:
 <button ng-click="ctrl.addADate(newDateText)" ng-disabled="!newDateText">Add</button>
 
 <div class="dates">
-    <div ng-repeat="date in localDates" class="date">
+    <div ng-repeat="date in dates | orderByPriority | orderBy:['-done', 'title']" class="date">
         <input type="checkbox" ng-model="date.done" ng-change="ctrl.updateDate(date)"/>
         {{date.title}}
+        [
+        <a href="" ng-click="ctrl.removeDate(date)">X</a>
+        ]
     </div>
 </div>
 </body>
