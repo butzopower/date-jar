@@ -1,3 +1,19 @@
 input:checked ~ .title {
     text-decoration: line-through;
 }
+
+.center {
+    text-align: center;
+}
+
+.left {
+    display: inline-block;
+    width: 48%;
+    vertical-align: top;
+    text-align: center;
+}
+
+.right {
+    display: inline-block;
+    width: 48%;
+}
