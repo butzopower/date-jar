@@ -5,6 +5,7 @@
     <script src="https://cdn.firebase.com/js/client/1.0.15/firebase.js"></script>
     <script src="https://cdn.firebase.com/libs/angularfire/0.7.1/angularfire.js"></script>
     <script src="app.js"></script>
+    <link rel="stylesheet" type="text/css" href="app.css">
 </head>
 <body ng-controller="DateController as ctrl">
 <h1>Date Jar</h1>
@@ -15,7 +16,7 @@ Add a new date:
 <div class="dates">
     <div ng-repeat="date in dates | orderByPriority | orderBy:['-done', 'title']" class="date">
         <input type="checkbox" ng-model="date.done" ng-change="ctrl.updateDate(date)"/>
-        {{date.title}}
+        <span class="title"> {{date.title}} </span>
         [
         <a href="" ng-click="ctrl.removeDate(date)">X</a>
         ]
