@@ -9,9 +9,11 @@
 </head>
 <body ng-controller="DateController as ctrl">
 <h1>Date Jar</h1>
-Add a new date:
-<input type="text" ng-model="newDateText">
-<button ng-click="ctrl.addADate(newDateText)" ng-disabled="!newDateText">Add</button>
+<form ng-submit="ctrl.addADate(newDateText)">
+    Add a new date:
+    <input type="text" ng-model="newDateText">
+    <input type="submit" value="Add" ng-disabled="!newDateText"/>
+</form>
 
 <div class="dates">
     <div ng-repeat="date in dates | orderByPriority | orderBy:['-done', 'title']" class="date">
