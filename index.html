@@ -4,26 +4,33 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.6/angular.js"></script>
     <script src="https://cdn.firebase.com/js/client/1.0.15/firebase.js"></script>
     <script src="https://cdn.firebase.com/libs/angularfire/0.7.1/angularfire.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
     <script src="app.js"></script>
     <link rel="stylesheet" type="text/css" href="app.css">
     <title>This is ze jar of the dates :)</title>
 </head>
 <body ng-controller="DateController as ctrl">
-<h1>Date Jar</h1>
-<form ng-submit="ctrl.addADate(newDateText)">
-    Add a new date:
-    <input type="text" ng-model="newDateText">
-    <input type="submit" value="Add" ng-disabled="!newDateText"/>
-</form>
+    <h1>Date Jar</h1>
+    <form ng-submit="ctrl.addADate(newDateText)">
+        Add a new date:
+        <input type="text" ng-model="newDateText">
+        <input type="submit" value="Add" ng-disabled="!newDateText"/>
+    </form>
 
-<div class="dates">
-    <div ng-repeat="date in dates | orderByPriority | orderBy:['-done', 'title']" class="date">
-        <input type="checkbox" ng-model="date.done" ng-change="ctrl.updateDate(date)"/>
-        <span class="title"> {{date.title}} </span>
-        [
-        <a href="" ng-click="ctrl.removeDate(date)">X</a>
-        ]
+    <div class="dates">
+        <div ng-repeat="date in dates | orderByPriority | orderBy:['-done', 'title']" class="date">
+            <input type="checkbox" ng-model="date.done" ng-change="ctrl.updateDate(date)"/>
+            <span class="title"> {{date.title}} </span>
+            [
+            <a href="" ng-click="ctrl.removeDate(date)">X</a>
+            ]
+        </div>
     </div>
-</div>
+
+    <button ng-click="ctrl.chooseDate(dates)">Choose a date!</button>
+    <div class="chosen-date" ng-show="chosenDate">
+        <h2>We are going to:</h2>
+        <h1>{{chosenDate}}</h1>
+    </div>
 </body>
 </html>

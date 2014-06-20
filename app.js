@@ -11,5 +11,11 @@ angular.module("dateJar").controller("DateController", ["$scope", "$firebase", f
 
   this.removeDate = function (date) {
     $scope.dates.$remove(date.$id);
-  }
+  };
+
+  this.chooseDate = function (dates) {
+    var localDates = _.map(dates.$getIndex(), function(index) { return dates[index]} );
+    var chosenDate = _.sample(_.filter(localDates, function(date) { return !date.done; }));
+    $scope.chosenDate = chosenDate.title;
+  };
 }]);
