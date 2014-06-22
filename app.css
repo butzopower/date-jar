@@ -2,18 +2,55 @@ input:checked ~ .title {
     text-decoration: line-through;
 }
 
+.date-text {
+    color: red;
+    -webkit-animation: colorcycle 1.5s ease-in infinite;
+    text-shadow: 0 40px yellow, 0px 80px green, 0 120px blue, 0 160px violet;
+}
+
+.date-text:after, .date-text:before {
+    content: ' !!!!! '
+}
+
 .center {
     text-align: center;
 }
 
 .left {
     display: inline-block;
-    width: 48%;
+    float: left;
     vertical-align: top;
     text-align: center;
+    width: 50%;
 }
 
 .right {
+    float: right;
     display: inline-block;
-    width: 48%;
+    width: 50%;
+}
+
+@-webkit-keyframes colorcycle
+{
+    0%, 100% {
+        color:red;
+        text-shadow: 0 40px yellow, 0px 80px green, 0 120px blue, 0 160px violet;
+    }
+    20%, 80% {
+        color:yellow;
+        text-shadow: 0 40px green, 0px 80px blue, 0 120px violet, 0 160px blue;
+    }
+    30%, 70% {
+        color:green;
+        text-shadow: 0 40px blue, 0px 80px violet, 0 120px blue, 0 160px green;
+    }
+    40%, 60% {
+        color:blue;
+        text-shadow: 0 40px violet, 0px 80px blue, 0 120px green, 0 160px yellow;
+    }
+    50% {
+        color: violet;
+        text-shadow: 0 40px red, 0px 80px green, 0 120px yellow, 0 160px red;
+    }
+
 }
